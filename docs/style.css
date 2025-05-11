@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+.lora {
+    font-family: "Lora", serif;
+    font-style: italic;
+  }
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+  }
+.open-sans{
+    font-family: "Open Sans", sans-serif;
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #f6ebef;
+    background-color: #f6ebef;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Poppins", sans-serif;
+    color: #f6ebef;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #f6ebef;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #ab0358;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left-nav ul {
+    display: flex;
+    align-items: center;
+}
+
+.left-nav ul li {
+    margin-right: 10px;
+}
+
+.left-nav ul li a {
+    font-size: 12px;
+    font-weight: 500;
+    color: #f6ebef;
+    text-transform: uppercase;
+}
+
+.left-nav li:last-child {
+    margin-right: 0;
+}
+
+.text-logo {
+    font-family: "Lora", serif;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    font-weight: 700;
+    color: #f6ebef;
+    font-style: italic;
+    text-align: center;
+}
+
+.right-nav ul {
+    display: flex;
+    align-items: center;
+}
+
+.right-nav ul li {
+    margin-left: 10px;
+}
+
+.right-nav ul li a {
+    font-size: 12px;
+    font-weight: 500;
+    color: #f6ebef;
+    text-transform: uppercase;
+}
+
+nav a:hover,
+nav a i:hover {
+    color: #f6ebef;
+    text-decoration: underline;
+}
+
+.tickets-btn {
+    border: 1px solid #f6ebef;
+    background-color: transparent;
+    padding: 7px 14px;
+    border-radius: 10px;
+}
+
+.tickets-btn:hover {
+    background-color: #f6ebef;
+    color: #ab0358 !important;
+    text-decoration: none;
+}
+
+/* Logo Section */
+.logo-section {
+    background-color: #f4f4f4;
+
+}
+
+.logo {
+    width: 90px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.border-line {
+    border: 1px solid #ab0358;
+    border-radius: 10px;
+    width: 97%;
+    margin: auto;
+    margin-bottom: 20px
+}
+
+/* Showcase */
+.showcase {
+    background: url('./Img/gallery_2.jpg') no-repeat center 30%/cover;
+    position: relative;
+    height: 50vh;
+}
+
+
