@@ -29,15 +29,15 @@ body {
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    color: #f6ebef;
-    background-color: #f6ebef;
+    color: #fff;
+    background-color: #fff;
     width: 100vw;
     overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Poppins", sans-serif;
-    color: #f6ebef;
+    color: #fff;
 }
 
 img {
@@ -46,7 +46,7 @@ img {
 
 a {
     text-decoration: none;
-    color: #f6ebef;
+    color: #fff;
 }
 
 li {
@@ -80,7 +80,7 @@ header {
 .left-nav ul li a {
     font-size: 11px;
     font-weight: 500;
-    color: #f6ebef;
+    color: #fff;
     text-transform: uppercase;
 }
 
@@ -95,7 +95,7 @@ header {
     transform: translateX(-50%);
     font-size: 24px;
     font-weight: 700;
-    color: #f6ebef;
+    color: #fff;
     font-style: italic;
     text-align: center;
 }
@@ -112,31 +112,32 @@ header {
 .right-nav ul li a {
     font-size: 11px;
     font-weight: 500;
-    color: #f6ebef;
+    color: #fff;
     text-transform: uppercase;
 }
 
 nav a:hover,
 nav a i:hover {
-    color: #f6ebef;
+    color: #fff;
     text-decoration: underline;
 }
 
 .tickets-btn {
-    border: 1px solid #f6ebef;
+    border: 1px solid #fff;
     background-color: transparent;
     padding: 7px 14px;
     border-radius: 10px;
 }
 
 .tickets-btn:hover {
-    background-color: #f6ebef;
+    background-color: #fff;
     color: #ab0358 !important;
     text-decoration: none;
 }
 
 /* Logo Section */
 .logo-section {
+    background-color: #f4f4f4;
     padding-bottom: 20px;
 }
 
@@ -167,6 +168,7 @@ nav a i:hover {
 }
 
 .latest-music {
+    background-color: #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,6 +176,8 @@ nav a i:hover {
   }
 
   .music-section h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
     font-size: 16px;
     color: #050505;
     text-align: center;
@@ -193,7 +197,7 @@ nav a i:hover {
     height: 70px;
     object-fit: cover;
     border-radius: 50%;
-    border: 1px solid #ab0358;
+    /* border: 1px solid #ab0358; */
   }
 
   .info {
@@ -204,12 +208,15 @@ nav a i:hover {
   }
 
   .song-title {
+    font-family: 'Lora', serif;
+    font-weight: 700; 
+    font-style: italic;
     font-size: 15px;
     color: #050505;
   }
 
   .artist-name {
-    font-size: 13px;
+    font-size: 12px;
     color: #050505;
     margin-top: 2px;
   }
@@ -228,7 +235,7 @@ nav a i:hover {
 
   .action-btn {
     font-size: 11px;
-    color: #f6ebef;
+    color: #fff;
     background: none;
     border: none;
     outline: none;
@@ -245,7 +252,7 @@ nav a i:hover {
   }
   
   .progress {
-    background-color: #000;
+    background-color: #444;
     border-radius: 5px;
     height: 100%;
     width: 50%;
@@ -254,7 +261,7 @@ nav a i:hover {
 
   .duration {
     font-size: 11px;
-    color: #f6ebef;
+    color: #fff;
   }
 
 
