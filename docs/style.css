@@ -61,7 +61,7 @@ li {
 /* Header */
 header {
     background-color: #ab0358;
-    padding: 20px;
+    padding: 20px 40px;
     position: relative;
     display: flex;
     align-items: center;
@@ -78,7 +78,7 @@ header {
 }
 
 .left-nav ul li a {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     color: #f6ebef;
     text-transform: uppercase;
@@ -93,7 +93,7 @@ header {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     color: #f6ebef;
     font-style: italic;
@@ -110,7 +110,7 @@ header {
 }
 
 .right-nav ul li a {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     color: #f6ebef;
     text-transform: uppercase;
@@ -137,12 +137,11 @@ nav a i:hover {
 
 /* Logo Section */
 .logo-section {
-    background-color: #f4f4f4;
-
+    padding-bottom: 20px;
 }
 
 .logo {
-    width: 90px;
+    width: 70px;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -156,11 +155,120 @@ nav a i:hover {
     margin-bottom: 20px
 }
 
+.border-line:last-child {
+    margin-bottom: 0;
+}
+
 /* Showcase */
 .showcase {
     background: url('./Img/gallery_2.jpg') no-repeat center 30%/cover;
     position: relative;
-    height: 50vh;
+    height: 300px;
 }
+
+.latest-music {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .music-section h3 {
+    font-size: 16px;
+    color: #050505;
+    text-align: center;
+    margin-bottom: 10px;
+    /* text-shadow: 1px 1px hotpink; */
+  }
+
+  .music-player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .cover img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #ab0358;
+  }
+
+  .info {
+    /* flex: 1; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .song-title {
+    font-size: 15px;
+    color: #050505;
+  }
+
+  .artist-name {
+    font-size: 13px;
+    color: #050505;
+    margin-top: 2px;
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 2px 10px;
+    background-color: #ab0358;
+    margin-top: 5px;
+    width: 200px;
+    border-radius: 5px;
+  }
+
+  .action-btn {
+    font-size: 11px;
+    color: #f6ebef;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .progress-container {
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 4px;
+    width: 100%;
+  }
+  
+  .progress {
+    background-color: #000;
+    border-radius: 5px;
+    height: 100%;
+    width: 50%;
+    transition: width 0.1s linear;
+  }
+
+  .duration {
+    font-size: 11px;
+    color: #f6ebef;
+  }
+
+
+
+@media(max-width: 767px) {
+  .showcase {
+    height: 150px;
+  }
+}
+
+
+
+  
+
+
 
 
