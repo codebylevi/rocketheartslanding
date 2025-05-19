@@ -21,15 +21,27 @@ body {
     font-family: "Open Sans", sans-serif;
     font-size: 1rem;
     line-height: 1.5;
-    color: #fff;
-    background-color: #fff;
+    color: #fffff0;
+    background-color: #fffff0;
     width: 100%;
     overflow-x: hidden;
 }
 
+.btn {
+  background: transparent;
+  color: #050505;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: "Poppins", sans-serif;
-    color: #fff;
+    color: #fffff0;
 }
 
 img {
@@ -38,7 +50,7 @@ img {
 
 a {
     text-decoration: none;
-    color: #fff;
+    color: #fffff0;
 }
 
 li {
@@ -72,7 +84,7 @@ header {
 .left-nav ul li a {
     font-size: 0.6875rem;
     font-weight: 500;
-    color: #fff;
+    color: #fffff0;
     text-transform: uppercase;
 }
 
@@ -87,7 +99,7 @@ header {
     transform: translateX(-50%);
     font-size: 1.5rem;
     font-weight: 700;
-    color: #fff;
+    color: #fffff0;
     font-style: italic;
     text-align: center;
 }
@@ -104,25 +116,25 @@ header {
 .right-nav ul li a {
     font-size: 0.6875rem;
     font-weight: 500;
-    color: #fff;
+    color: #fffff0;
     text-transform: uppercase;
 }
 
 nav a:hover,
 nav a i:hover {
-    color: #fff;
+    color: #fffff0;
     text-decoration: underline;
 }
 
 .tickets-btn {
-    border: 1px solid #fff;
+    border: 1px solid #fffff0;
     background-color: transparent;
     padding: 0.4375rem 0.875rem;
     border-radius: 0.625rem;
 }
 
 .tickets-btn:hover {
-    background-color: #fff;
+    background-color: #fffff0;
     color: #ab0358 !important;
     text-decoration: none;
 }
@@ -226,7 +238,7 @@ nav a i:hover {
 
   .action-btn {
     font-size: 0.6875rem;
-    color: #fff;
+    color: #fffff0;
     background: none;
     border: none;
     outline: none;
@@ -238,7 +250,7 @@ nav a i:hover {
   }
 
   .progress-container {
-    background: #fff;
+    background: #fffff0;
     border-radius: 0.3125rem;
     margin: 0.625rem 0;
     cursor: pointer;
@@ -256,8 +268,44 @@ nav a i:hover {
 
   .duration {
     font-size: 0.6875rem;
-    color: #fff;
+    color: #fffff0;
   }
+
+  /* VIDEO */
+  .video-section {
+    background-color: #fffff0;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+   .video-container {
+      width: 43.75rem;
+      max-width: 50rem;
+      height: auto;
+      margin: auto;
+    }
+
+    .responsive-video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .video-section a {
+      margin-top: 2.5rem;
+      background-color: #ab0358;
+      border: 1px solid #ab0358;
+      color: #fffff0;
+    }
+
+    .video-section a:hover {
+      background: transparent;
+      border: 1px solid #ab0358;
+      color: #ab0358;
+    }
 
 
 
