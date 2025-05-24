@@ -423,6 +423,10 @@ nav a i:hover {
   font-weight: bold;
 }
 
+.track i {
+  cursor: pointer;
+}
+
 .player {
   display: flex;
   flex-wrap: wrap;

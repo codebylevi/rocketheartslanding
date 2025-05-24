@@ -87,7 +87,7 @@ const songs = [
   { title: "Velvet Sky", file: "./audio/velvet-sky.mp3" },
   { title: "Floral Notes", file: "./audio/floral-notes.mp3" },
   { title: "Midnight Petals", file: "./audio/midnight-petals.mp3" },
-  { title: "Kiss More", file: "./audio/kiss-more.mp3" }, // title updated
+  { title: "Kiss More", file: "./audio/kiss-more.mp3" }, // changed title here
   { title: "Sweet Nectar", file: "./audio/sweet-nectar.mp3" },
   { title: "Rosy Road", file: "./audio/rosy-road.mp3" },
   { title: "Thorns and Harmony", file: "./audio/thorns-and-harmony.mp3" },
@@ -105,80 +105,139 @@ let currentTrack = 0;
 let isPlaying = false;
 let isSeeking = false;
 
-// Generate tracklist with play buttons
+// Generate tracklist with numbers and play buttons
 songs.forEach((song, index) => {
   const trackDiv = document.createElement("div");
   trackDiv.classList.add("track");
+  trackDiv.setAttribute("data-index", index);
   trackDiv.innerHTML = `
-    <span>${song.title}</span>
-    <button aria-label="Play ${song.title}" data-index="${index}"><i class="fas fa-play"></i></button>
+    <span>${index + 1}. ${song.title}</span>
+    <button aria-label="Play ${song.title}" class="track-play-btn">
+      <i class="fa-solid fa-play"></i>
+    </button>
   `;
   tracklist.appendChild(trackDiv);
 });
 
-// Add click event to track buttons
+// Play or pause when clicking on track play buttons
 tracklist.addEventListener("click", (e) => {
-  if (e.target.closest("button")) {
-    const index = parseInt(
-      e.target.closest("button").getAttribute("data-index")
-    );
-    if (!isNaN(index)) {
+  if (e.target.closest("button.track-play-btn")) {
+    const btn = e.target.closest("button.track-play-btn");
+    const index = parseInt(btn.parentElement.getAttribute("data-index"));
+    if (index === currentTrack) {
+      // toggle play/pause on current track
+      togglePlay();
+    } else {
       playSong(index);
     }
   }
 });
 
-function highlightTrack(index) {
-  document.querySelectorAll(".track").forEach((track, i) => {
-    track.classList.toggle("active", i === index);
+// Update track highlighting and button icons
+function updateTrackUI() {
+  const tracks = document.querySelectorAll(".track");
+  tracks.forEach((track, i) => {
+    const btn = track.querySelector("button.track-play-btn i");
+    if (i === currentTrack) {
+      track.classList.add("active");
+      if (isPlaying) {
+        btn.classList.remove("fa-play");
+        btn.classList.add("fa-pause");
+      } else {
+        btn.classList.remove("fa-pause");
+        btn.classList.add("fa-play");
+      }
+    } else {
+      track.classList.remove("active");
+      btn.classList.remove("fa-pause");
+      btn.classList.add("fa-play");
+    }
   });
+
+  // Update main play/pause button icon
+  const mainIcon = playPauseBtn.querySelector("i");
+  if (isPlaying) {
+    mainIcon.classList.remove("fa-play");
+    mainIcon.classList.add("fa-pause");
+  } else {
+    mainIcon.classList.remove("fa-pause");
+    mainIcon.classList.add("fa-play");
+  }
 }
 
+// Load and play a specific song
 function playSong(index) {
   if (index < 0 || index >= songs.length) return;
-  currentTrack = index;
+  if (currentTrack !== index) {
+    currentTrack = index;
+    mp3.src = songs[currentTrack].file;
+  }
+
+  mp3
+    .play()
+    .then(() => {
+      isPlaying = true;
+      updateTrackUI();
+    })
+    .catch((error) => {
+      console.error("Play error:", error);
+    });
+}
+
+// Toggle play/pause for current track
+function togglePlay() {
+  if (!mp3.src) {
+    mp3.src = songs[currentTrack].file;
+  }
+
+  if (isPlaying) {
+    mp3.pause();
+    isPlaying = false;
+    updateTrackUI();
+  } else {
+    mp3
+      .play()
+      .then(() => {
+        isPlaying = true;
+        updateTrackUI();
+      })
+      .catch((error) => {
+        console.error("Play error:", error);
+      });
+  }
+}
+
+// Next track
+function nextTrack() {
+  currentTrack = (currentTrack + 1) % songs.length;
   mp3.src = songs[currentTrack].file;
   mp3
     .play()
     .then(() => {
       isPlaying = true;
-      playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-      highlightTrack(currentTrack);
+      updateTrackUI();
     })
-    .catch((err) => {
-      console.error("Playback error:", err);
+    .catch((error) => {
+      console.error("Play error:", error);
     });
 }
 
-function togglePlay() {
-  if (!mp3.src) mp3.src = songs[currentTrack].file;
-
-  if (isPlaying) {
-    mp3.pause();
-    playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-  } else {
-    mp3
-      .play()
-      .then(() => {
-        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-      })
-      .catch((err) => {
-        console.error("Playback error:", err);
-      });
-  }
-  isPlaying = !isPlaying;
-}
-
+// Previous track
 function previousTrack() {
   currentTrack = (currentTrack - 1 + songs.length) % songs.length;
-  playSong(currentTrack);
+  mp3.src = songs[currentTrack].file;
+  mp3
+    .play()
+    .then(() => {
+      isPlaying = true;
+      updateTrackUI();
+    })
+    .catch((error) => {
+      console.error("Play error:", error);
+    });
 }
 
-function nextTrack() {
-  currentTrack = (currentTrack + 1) % songs.length;
-  playSong(currentTrack);
-}
-
+// Format time in mm:ss
 function formatTime(seconds) {
   if (isNaN(seconds)) return "0:00";
   const mins = Math.floor(seconds / 60);
@@ -188,6 +247,7 @@ function formatTime(seconds) {
   return `${mins}:${secs}`;
 }
 
+// Update seek bar and time display during playback
 mp3.addEventListener("timeupdate", () => {
   if (!isSeeking) {
     const current = mp3.currentTime;
@@ -199,22 +259,14 @@ mp3.addEventListener("timeupdate", () => {
   }
 });
 
-mp3.addEventListener("ended", nextTrack);
-
-seekBar.addEventListener("mousedown", () => (isSeeking = true));
-seekBar.addEventListener("touchstart", () => (isSeeking = true));
-
-seekBar.addEventListener("mouseup", () => {
-  isSeeking = false;
-  mp3.currentTime = (seekBar.value / 100) * mp3.duration;
-});
-seekBar.addEventListener("touchend", () => {
-  isSeeking = false;
-  mp3.currentTime = (seekBar.value / 100) * mp3.duration;
+// Automatically play next track on ended
+mp3.addEventListener("ended", () => {
+  nextTrack();
 });
 
+// Seek bar controls
 seekBar.addEventListener("input", () => {
-  if (isSeeking) {
+  if (mp3.duration) {
     const seekTo = (seekBar.value / 100) * mp3.duration;
     durationDisplay.textContent = `${formatTime(seekTo)} / ${formatTime(
       mp3.duration
@@ -222,7 +274,29 @@ seekBar.addEventListener("input", () => {
   }
 });
 
-volumeSlider.addEventListener("input", () => (mp3.volume = volumeSlider.value));
+seekBar.addEventListener("change", () => {
+  if (mp3.duration) {
+    const seekTo = (seekBar.value / 100) * mp3.duration;
+    mp3.currentTime = seekTo;
+  }
+});
 
+// Volume control
+volumeSlider.addEventListener("input", () => {
+  mp3.volume = volumeSlider.value;
+});
+
+// Initialize volume to max
 mp3.volume = 1;
-highlightTrack(currentTrack);
+
+// Play first track on album play button click
+function playFirstTrack() {
+  if (currentTrack !== 0 || !isPlaying) {
+    playSong(0);
+  } else {
+    togglePlay();
+  }
+}
+
+// Initialize UI (no auto-play)
+updateTrackUI();
