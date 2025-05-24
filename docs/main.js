@@ -81,13 +81,13 @@ actionBtn.addEventListener("keydown", (e) => {
   }
 });
 
-// ALBUM PLAYER
+// ALBUM TRACKLIST
 const songs = [
   { title: "Intro Bloom", file: "./audio/intro-bloom.mp3" },
   { title: "Velvet Sky", file: "./audio/velvet-sky.mp3" },
   { title: "Floral Notes", file: "./audio/floral-notes.mp3" },
   { title: "Midnight Petals", file: "./audio/midnight-petals.mp3" },
-  { title: "Sunset in Bloom", file: "./audio/kiss-more.mp3" },
+  { title: "Kiss More", file: "./audio/kiss-more.mp3" }, // title updated
   { title: "Sweet Nectar", file: "./audio/sweet-nectar.mp3" },
   { title: "Rosy Road", file: "./audio/rosy-road.mp3" },
   { title: "Thorns and Harmony", file: "./audio/thorns-and-harmony.mp3" },
@@ -110,68 +110,75 @@ songs.forEach((song, index) => {
   const trackDiv = document.createElement("div");
   trackDiv.classList.add("track");
   trackDiv.innerHTML = `
-        <span>${song.title}</span>
-        <button aria-label="Play ${song.title}" data-index="${index}"><i class="fas fa-play"></i></button>
-      `;
+    <span>${song.title}</span>
+    <button aria-label="Play ${song.title}" data-index="${index}"><i class="fas fa-play"></i></button>
+  `;
   tracklist.appendChild(trackDiv);
 });
 
 // Add click event to track buttons
 tracklist.addEventListener("click", (e) => {
-  if (e.target.tagName === "button") {
-    const index = parseInt(e.target.getAttribute("data-index"));
+  if (e.target.closest("button")) {
+    const index = parseInt(
+      e.target.closest("button").getAttribute("data-index")
+    );
     if (!isNaN(index)) {
       playSong(index);
     }
   }
 });
 
-// Highlight the active track
 function highlightTrack(index) {
   document.querySelectorAll(".track").forEach((track, i) => {
     track.classList.toggle("active", i === index);
   });
 }
 
-// Load and play a specific song
 function playSong(index) {
   if (index < 0 || index >= songs.length) return;
   currentTrack = index;
   mp3.src = songs[currentTrack].file;
-  mp3.play();
-  isPlaying = true;
-  playPauseBtn.textContent = `<i class="fa-solid fa-pause"></i>`;
-  highlightTrack(currentTrack);
+  mp3
+    .play()
+    .then(() => {
+      isPlaying = true;
+      playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+      highlightTrack(currentTrack);
+    })
+    .catch((err) => {
+      console.error("Playback error:", err);
+    });
 }
 
-// Toggle play/pause
 function togglePlay() {
+  if (!mp3.src) mp3.src = songs[currentTrack].file;
+
   if (isPlaying) {
     mp3.pause();
-    playPauseBtn.textContent = `<i class="fa-solid fa-play"></i>`;
+    playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
   } else {
-    if (!mp3.src) {
-      mp3.src = songs[currentTrack].file;
-    }
-    mp3.play();
-    playPauseBtn.textContent = `<i class="fa-solid fa-pause"></i>`;
+    mp3
+      .play()
+      .then(() => {
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+      })
+      .catch((err) => {
+        console.error("Playback error:", err);
+      });
   }
   isPlaying = !isPlaying;
 }
 
-// Go to previous track
 function previousTrack() {
   currentTrack = (currentTrack - 1 + songs.length) % songs.length;
   playSong(currentTrack);
 }
 
-// Go to next track
 function nextTrack() {
   currentTrack = (currentTrack + 1) % songs.length;
   playSong(currentTrack);
 }
 
-// Format seconds into mm:ss
 function formatTime(seconds) {
   if (isNaN(seconds)) return "0:00";
   const mins = Math.floor(seconds / 60);
@@ -181,7 +188,6 @@ function formatTime(seconds) {
   return `${mins}:${secs}`;
 }
 
-// Update duration and seek bar
 mp3.addEventListener("timeupdate", () => {
   if (!isSeeking) {
     const current = mp3.currentTime;
@@ -193,30 +199,20 @@ mp3.addEventListener("timeupdate", () => {
   }
 });
 
-// When mp3 ends, automatically go to next track
 mp3.addEventListener("ended", nextTrack);
 
-// Seek bar input start
-seekBar.addEventListener("mousedown", () => {
-  isSeeking = true;
+seekBar.addEventListener("mousedown", () => (isSeeking = true));
+seekBar.addEventListener("touchstart", () => (isSeeking = true));
+
+seekBar.addEventListener("mouseup", () => {
+  isSeeking = false;
+  mp3.currentTime = (seekBar.value / 100) * mp3.duration;
 });
-seekBar.addEventListener("touchstart", () => {
-  isSeeking = true;
+seekBar.addEventListener("touchend", () => {
+  isSeeking = false;
+  mp3.currentTime = (seekBar.value / 100) * mp3.duration;
 });
 
-// Seek bar input end
-seekBar.addEventListener("mouseup", (e) => {
-  isSeeking = false;
-  const seekTo = (seekBar.value / 100) * mp3.duration;
-  mp3.currentTime = seekTo;
-});
-seekBar.addEventListener("touchend", (e) => {
-  isSeeking = false;
-  const seekTo = (seekBar.value / 100) * mp3.duration;
-  mp3.currentTime = seekTo;
-});
-
-// Update mp3 time while dragging
 seekBar.addEventListener("input", () => {
   if (isSeeking) {
     const seekTo = (seekBar.value / 100) * mp3.duration;
@@ -226,13 +222,7 @@ seekBar.addEventListener("input", () => {
   }
 });
 
-// Volume control
-volumeSlider.addEventListener("input", () => {
-  mp3.volume = volumeSlider.value;
-});
+volumeSlider.addEventListener("input", () => (mp3.volume = volumeSlider.value));
 
-// Initialize volume to max
 mp3.volume = 1;
-
-// Auto highlight first track on load
 highlightTrack(currentTrack);
