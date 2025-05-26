@@ -5,13 +5,13 @@ const progressContainer = document.querySelector(".progress-container");
 const progress = document.querySelector(".progress");
 const durationText = document.querySelector(".duration");
 
-const audio = document.querySelector("audio");
+const audio = document.querySelector(".audio");
 
 function playSong() {
   musicPlayer.classList.add("play");
 
-  actionBtn.querySelector("i.fas").classList.remove("fa-play");
-  actionBtn.querySelector("i.fas").classList.add("fa-pause");
+  actionBtn.querySelector("i.fa-solid").classList.remove("fa-play");
+  actionBtn.querySelector("i.fa-solid").classList.add("fa-pause");
 
   audio.play();
 }
@@ -19,8 +19,8 @@ function playSong() {
 function pauseSong() {
   musicPlayer.classList.remove("play");
 
-  actionBtn.querySelector("i.fas").classList.remove("fa-pause");
-  actionBtn.querySelector("i.fas").classList.add("fa-play");
+  actionBtn.querySelector("i.fa-solid").classList.remove("fa-pause");
+  actionBtn.querySelector("i.fa-solid").classList.add("fa-play");
 
   audio.pause();
 }
@@ -126,9 +126,9 @@ tracklist.addEventListener("click", (e) => {
     const index = parseInt(btn.parentElement.getAttribute("data-index"));
     if (index === currentTrack) {
       // toggle play/pause on current track
-      togglePlay();
+      toggleAlbumPlay();
     } else {
-      playSong(index);
+      playAlbumSong(index);
     }
   }
 });
@@ -166,7 +166,7 @@ function updateTrackUI() {
 }
 
 // Load and play a specific song
-function playSong(index) {
+function playAlbumSong(index) {
   if (index < 0 || index >= songs.length) return;
   if (currentTrack !== index) {
     currentTrack = index;
@@ -185,7 +185,7 @@ function playSong(index) {
 }
 
 // Toggle play/pause for current track
-function togglePlay() {
+function toggleAlbumPlay() {
   if (!mp3.src) {
     mp3.src = songs[currentTrack].file;
   }
@@ -292,9 +292,9 @@ mp3.volume = 1;
 // Play first track on album play button click
 function playFirstTrack() {
   if (currentTrack !== 0 || !isPlaying) {
-    playSong(0);
+    playAlbumSong(0);
   } else {
-    togglePlay();
+    toggleAlbumPlay();
   }
 }
 
