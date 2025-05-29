@@ -391,7 +391,7 @@ nav a i:hover {
   overflow-y: auto;
   margin-bottom: 1rem;
   scrollbar-width: thin;
-  scrollbar-color: #f8cdda transparent;
+  scrollbar-color: #fffff0 transparent;
 }
 
 .tracklist::-webkit-scrollbar {
@@ -399,7 +399,7 @@ nav a i:hover {
 }
 
 .tracklist::-webkit-scrollbar-thumb {
-  background-color: #f8cdda;
+  background-color: #fffff0;
   border-radius: 3px;
 }
 
@@ -427,6 +427,13 @@ nav a i:hover {
   cursor: pointer;
 }
 
+.track-play-btn {
+  background: none !important;
+  border: none;
+  outline: none;
+  color: #fffff0;
+}
+
 .player {
   display: flex;
   flex-wrap: wrap;
@@ -448,7 +455,7 @@ nav a i:hover {
 }
 
 .player button:hover {
-  color: #f8cdda;
+  opacity: 0.9;
 }
 
 #track-duration {
@@ -457,8 +464,24 @@ nav a i:hover {
   user-select: none;
 }
 
-/* Seek bar styles */
-#seek-bar {
+.seek-bar {
+  background: #333;
+  border-radius: 3px;
+  cursor: pointer;
+  height: 0.375rem;
+  width: 100%;
+  max-width: 18.75rem;
+}
+
+.seek-progress {
+  background-color: #fffff0;
+  border-radius: 3px;
+  height: 100%;
+  width: 0;
+  transition: width 0.1s linear;
+}
+
+/* #seek-bar {
   -webkit-appearance: none;
   width: 100%;
   max-width: 300px;
@@ -466,7 +489,6 @@ nav a i:hover {
   background: #333;
   border-radius: 3px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   flex-grow: 1;
 }
 
@@ -506,9 +528,8 @@ nav a i:hover {
 #seek-bar::-moz-range-thumb:hover {
   background: #fff;
   box-shadow: 0 0 10px #fff;
-}
+} */
 
-/* Volume slider styles */
 #volume-slider {
   -webkit-appearance: none;
   width: 100px;
@@ -519,43 +540,57 @@ nav a i:hover {
   transition: background-color 0.3s ease;
 }
 
+/* Track hover effect */
 #volume-slider:hover {
-  background: #f8cdda;
+  background: #fffff0;
 }
 
+/* Hide thumb by default */
 #volume-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 16px;
-  height: 16px;
-  background: #f8cdda;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction when hidden */
+  transition: all 0.3s ease;
+}
+
+/* Show thumb on hover */
+#volume-slider:hover::-webkit-slider-thumb {
+  width: 0.9375rem;
+  height: 0.9375rem;
+  opacity: 1;
+  pointer-events: auto;
+  background: #fffff0;
   cursor: pointer;
   border-radius: 50%;
   border: none;
-  transition: background-color 0.3s ease;
-  margin-top: -5px;
+  margin-top: -3px;
   box-shadow: 0 0 5px #f8cddaaa;
-}
-
-#volume-slider::-webkit-slider-thumb:hover {
-  background: #fff;
-  box-shadow: 0 0 10px #fff;
 }
 
 #volume-slider::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  background: #f8cdda;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction when hidden */
+  transition: all 0.3s ease;
+}
+
+#volume-slider:hover::-moz-range-thumb {
+  width: 0.9375rem;
+  height: 0.9375rem;
+  opacity: 1;
+  pointer-events: auto;
+  background: #fffff0;
   cursor: pointer;
   border-radius: 50%;
   border: none;
-  transition: background-color 0.3s ease;
+  margin-top: -3px;
   box-shadow: 0 0 5px #f8cddaaa;
-}
-
-#volume-slider::-moz-range-thumb:hover {
-  background: #fff;
-  box-shadow: 0 0 10px #fff;
 }
 
 .discography-showcase {

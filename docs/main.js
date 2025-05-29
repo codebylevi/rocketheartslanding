@@ -97,7 +97,8 @@ const songs = [
 const tracklist = document.getElementById("tracklist");
 const mp3 = document.getElementById("mp3");
 const durationDisplay = document.getElementById("track-duration");
-const seekBar = document.getElementById("seek-bar");
+const seekBar = document.querySelector(".seek-bar");
+const seekProgress = document.querySelector(".seek-progress");
 const volumeSlider = document.getElementById("volume-slider");
 const playPauseBtn = document.getElementById("play-pause-btn");
 
@@ -265,21 +266,42 @@ mp3.addEventListener("ended", () => {
 });
 
 // Seek bar controls
-seekBar.addEventListener("input", () => {
-  if (mp3.duration) {
-    const seekTo = (seekBar.value / 100) * mp3.duration;
-    durationDisplay.textContent = `${formatTime(seekTo)} / ${formatTime(
-      mp3.duration
-    )}`;
-  }
-});
 
-seekBar.addEventListener("change", () => {
-  if (mp3.duration) {
-    const seekTo = (seekBar.value / 100) * mp3.duration;
-    mp3.currentTime = seekTo;
-  }
-});
+// seekBar.addEventListener("input", () => {
+//   if (mp3.duration) {
+//     const seekTo = (seekBar.value / 100) * mp3.duration;
+//     durationDisplay.textContent = `${formatTime(seekTo)} / ${formatTime(
+//       mp3.duration
+//     )}`;
+//   }
+// });
+
+// seekBar.addEventListener("change", () => {
+//   if (mp3.duration) {
+//     const seekTo = (seekBar.value / 100) * mp3.duration;
+//     mp3.currentTime = seekTo;
+//   }
+// });
+mp3.addEventListener("timeupdate", updateSeekBar);
+seekBar.addEventListener("click", setSeekProgress);
+
+function updateSeekBar(e) {
+  const { duration, currentTime } = e.srcElement;
+  const seekPercent = (currentTime / duration) * 100;
+  seekProgress.style.width = `${seekPercent}%`;
+
+  durationDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(
+    duration
+  )}`;
+}
+
+function setSeekProgress(e) {
+  const width = this.clientWidth;
+  const clientX = e.offsetX;
+  const duration = mp3.duration;
+
+  mp3.currentTime = (clientX / width) * duration;
+}
 
 // Volume control
 volumeSlider.addEventListener("input", () => {
