@@ -8,6 +8,10 @@
       src="https://kit.fontawesome.com/0b7f0757f0.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=volume_up"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -144,16 +148,19 @@
 
             <span id="track-duration">0:00 / 0:00</span>
 
-            <input
-              type="range"
-              id="volume-slider"
-              min="0"
-              max="1"
-              step="0.01"
-              value="1"
-              aria-label="Volume Control"
-              title="Volume"
-            />
+            <div class="volume">
+              <span class="material-symbols-outlined"> volume_up </span>
+              <input
+                type="range"
+                id="volume-slider"
+                min="0"
+                max="1"
+                step="0.01"
+                value="1"
+                aria-label="Volume Control"
+                title="Volume"
+              />
+            </div>
           </div>
         </div>
 

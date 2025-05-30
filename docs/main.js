@@ -265,23 +265,7 @@ mp3.addEventListener("ended", () => {
   nextTrack();
 });
 
-// Seek bar controls
-
-// seekBar.addEventListener("input", () => {
-//   if (mp3.duration) {
-//     const seekTo = (seekBar.value / 100) * mp3.duration;
-//     durationDisplay.textContent = `${formatTime(seekTo)} / ${formatTime(
-//       mp3.duration
-//     )}`;
-//   }
-// });
-
-// seekBar.addEventListener("change", () => {
-//   if (mp3.duration) {
-//     const seekTo = (seekBar.value / 100) * mp3.duration;
-//     mp3.currentTime = seekTo;
-//   }
-// });
+// Seek bar functionality
 mp3.addEventListener("timeupdate", updateSeekBar);
 seekBar.addEventListener("click", setSeekProgress);
 
@@ -304,12 +288,19 @@ function setSeekProgress(e) {
 }
 
 // Volume control
+function updateVolumeSliderBackground() {
+  const value = parseFloat(volumeSlider.value) * 100;
+  volumeSlider.style.background = `linear-gradient(to right, #fffff0 ${value}%, #333 ${value}%)`;
+}
+
+// Set initial background
+updateVolumeSliderBackground();
+
+// Update on input
 volumeSlider.addEventListener("input", () => {
   mp3.volume = volumeSlider.value;
+  updateVolumeSliderBackground();
 });
-
-// Initialize volume to max
-mp3.volume = 1;
 
 // Play first track on album play button click
 function playFirstTrack() {
