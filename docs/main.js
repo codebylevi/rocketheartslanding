@@ -83,15 +83,15 @@ actionBtn.addEventListener("keydown", (e) => {
 
 // ALBUM TRACKLIST
 const songs = [
-  { title: "Intro Bloom", file: "./audio/intro-bloom.mp3" },
-  { title: "Velvet Sky", file: "./audio/velvet-sky.mp3" },
-  { title: "Floral Notes", file: "./audio/floral-notes.mp3" },
-  { title: "Midnight Petals", file: "./audio/midnight-petals.mp3" },
-  { title: "Kiss More", file: "./audio/kiss-more.mp3" }, // changed title here
-  { title: "Sweet Nectar", file: "./audio/sweet-nectar.mp3" },
-  { title: "Rosy Road", file: "./audio/rosy-road.mp3" },
-  { title: "Thorns and Harmony", file: "./audio/thorns-and-harmony.mp3" },
-  { title: "Garden's End", file: "./audio/gardens-end.mp3" },
+  { title: "Swimming Pool", file: "./audio/Swimming-Pool.mp3" },
+  { title: "Apocalypse", file: "./audio/apocalypse.mp3" },
+  { title: "Eyedress", file: "./audio/Eyedress.mp3" },
+  { title: "505", file: "./audio/505.mp3" },
+  { title: "Sunsetz", file: "./audio/Sunsetz.mp3" },
+  { title: "Sweet", file: "./audio/Sweet.mp3" },
+  { title: "K", file: "./audio/K.mp3" },
+  { title: "Truly", file: "./audio/Truly.mp3" },
+  { title: "Sad Love", file: "./audio/Sad-Love.mp3" },
 ];
 
 const tracklist = document.getElementById("tracklist");
@@ -313,3 +313,75 @@ function playFirstTrack() {
 
 // Initialize UI (no auto-play)
 updateTrackUI();
+
+// GALLERY
+document.addEventListener("DOMContentLoaded", function () {
+  const slider = document.querySelector(".slider");
+  const slides = document.querySelectorAll(".slide");
+  const prevButton = document.querySelector(".button-prev");
+  const nextButton = document.querySelector(".button-next");
+  const dots = document.querySelectorAll(".dot");
+  const slideCount = slides.length;
+  let currentSlide = 0;
+
+  // Preload images
+  const preloadImages = () => {
+    document.querySelectorAll(".slide img").forEach((img) => {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = img.src;
+      document.head.appendChild(link);
+    });
+  };
+
+  preloadImages();
+
+  // Go to specific slide
+  function goToSlide(index) {
+    slider.style.transform = `translateX(-${index * 100}%)`;
+    currentSlide = index;
+
+    dots.forEach((dot) => dot.classList.remove("active"));
+    dots[currentSlide].classList.add("active");
+
+    prevButton.disabled = currentSlide === 0;
+    nextButton.disabled = currentSlide === slideCount - 1;
+  }
+
+  function nextSlide() {
+    goToSlide((currentSlide + 1) % slideCount);
+  }
+
+  function prevSlide() {
+    goToSlide((currentSlide - 1 + slideCount) % slideCount);
+  }
+
+  nextButton.addEventListener("click", nextSlide);
+  prevButton.addEventListener("click", prevSlide);
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => goToSlide(i));
+  });
+
+  let slideInterval = setInterval(nextSlide, 5000);
+
+  document
+    .querySelector(".slider-container")
+    .addEventListener("mouseenter", () => {
+      clearInterval(slideInterval);
+    });
+
+  document
+    .querySelector(".slider-container")
+    .addEventListener("mouseleave", () => {
+      slideInterval = setInterval(nextSlide, 5000);
+    });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") nextSlide();
+    if (e.key === "ArrowLeft") prevSlide();
+  });
+
+  goToSlide(0);
+});

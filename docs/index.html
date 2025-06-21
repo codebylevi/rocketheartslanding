@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pink Panther</title>
+    <title>Rocket Hearts</title>
     <script
       src="https://kit.fontawesome.com/0b7f0757f0.js"
       crossorigin="anonymous"
@@ -15,82 +15,90 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <nav class="left-nav">
-        <ul>
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">Bio</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Tour</a></li>
-        </ul>
-      </nav>
+    <div class="showcase">
+      <header>
+        <nav class="left-nav">
+          <ul>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Bio</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Tour</a></li>
+          </ul>
+        </nav>
 
-      <h1 class="text-logo">Pink Panther</h1>
+        <div class="logo">
+          <a href="index.html"
+            ><img src="./img/Rocket_hearts_logo2.png" alt="Logo"
+          /></a>
+        </div>
 
-      <nav class="right-nav">
-        <ul>
-          <li>
-            <a href="x.com"><i class="fa-brands fa-square-x-twitter"></i></a>
-          </li>
-          <li>
-            <a href="spotify.com"><i class="fa-brands fa-spotify"></i></a>
-          </li>
-          <li>
-            <a href="facebook.com"
-              ><i class="fa-brands fa-square-facebook"></i
-            ></a>
-          </li>
-          <li>
-            <a href="instagram.com"
-              ><i class="fa-brands fa-square-instagram"></i
-            ></a>
-          </li>
-          <li><a href="#" class="tickets-btn">Tickets</a></li>
-        </ul>
-      </nav>
-    </header>
+        <nav class="right-nav">
+          <ul>
+            <li>
+              <a href="https://x.com"
+                ><i class="fa-brands fa-square-x-twitter"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://spotify.com"
+                ><i class="fa-brands fa-spotify"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://facebook.com"
+                ><i class="fa-brands fa-square-facebook"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://instagram.com"
+                ><i class="fa-brands fa-square-instagram"></i
+              ></a>
+            </li>
+            <li><a href="#" class="tickets-btn">Tickets</a></li>
+          </ul>
+        </nav>
+      </header>
 
-    <div class="logo-section">
-      <a href="index.html"
-        ><img src="./Img/ppLogo-removebg-preview.png" class="logo" alt="Logo"
-      /></a>
-      <div class="border-line"></div>
-      <div class="border-line"></div>
-    </div>
-
-    <div class="showcase"></div>
-
-    <div class="latest-music">
-      <div class="music-section">
-        <h3>Latest Song</h3>
-        <div class="music-player">
-          <div class="cover">
-            <img src="./Img/kiss-more.png" alt="Kiss More Cover" />
-          </div>
-          <div class="info">
-            <div>
-              <h1 class="song-title">Pink Garden</h1>
-              <p class="artist-name">Pink Panther</p>
+      <!-- Music Player -->
+      <div class="latest-music">
+        <div class="music-section">
+          <p class="showcase-text">
+            Latest track in Dear Melancholy album<br /><strong
+              >“Swimming Pool” Out Now!</strong
+            >
+          </p>
+          <div class="music-player">
+            <div class="cover">
+              <img src="./img/swimming-pool1.jpeg" alt="Swimming Pool Cover" />
             </div>
-            <div class="controls">
-              <button class="action-btn" id="action-btn">
-                <i class="fa-solid fa-play"></i>
-              </button>
-              <div class="progress-container">
-                <div class="progress"></div>
+            <div class="info">
+              <div>
+                <h1 class="song-title">Swimming Pool</h1>
+                <p class="artist-name">Rocket Hearts</p>
               </div>
-              <div class="duration">0:00 / 0:00</div>
+              <div class="controls">
+                <button class="action-btn" id="action-btn">
+                  <i class="fa-solid fa-play"></i>
+                </button>
+                <div class="progress-container">
+                  <div class="progress"></div>
+                </div>
+                <div class="duration">0:00 / 0:00</div>
+              </div>
             </div>
           </div>
         </div>
+        <audio src="./audio/Swimming-Pool.mp3" class="audio"></audio>
       </div>
-      <audio src="./audio/pink-garden.mp3" class="audio"></audio>
     </div>
 
     <section class="video-section">
       <div class="video-container">
         <video class="responsive-video" controls>
-          <source src="video/kiss-me-more.mp4" type="video/mp4" />
+          <source
+            src="./video/Arctic Monkeys  - 505 (Reading Festival 2022).mp4"
+            type="video/mp4"
+          />
         </video>
       </div>
       <a href="#" class="btn">See More</a>
@@ -107,8 +115,8 @@
             <div class="album-cover"></div>
             <div class="album-info">
               <p>Latest Album</p>
-              <h3>Pink Garden</h3>
-              <p>by Pink Panther</p>
+              <h3>Dear Melancholy</h3>
+              <p>by Rocket Hearts</p>
             </div>
           </div>
 
@@ -165,13 +173,55 @@
         </div>
 
         <div class="discography-showcase">
-          <h2>Discover Pink Garden</h2>
+          <h2>Discover Rocket Hearts</h2>
           <p>
-            Experience the latest sounds from Pink Panther. A blend of rhythm
+            Experience the latest sounds from Rocket Hearts. A blend of rhythm
             and soul in every track.
           </p>
           <!-- <button onclick="playFirstTrack()">Play Album</button> -->
           <a href="#" class="btn">View Discography</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <h2>Gallery</h2>
+      <div class="slider-container">
+        <div class="slider">
+          <div class="slide">
+            <img src="./Img/gallery1.jpg" alt="Nature 2" loading="eager" />
+          </div>
+          <div class="slide">
+            <img src="./Img/gallery2.jpg" alt="Nature 3" loading="eager" />
+          </div>
+          <div class="slide">
+            <img src="./Img/gallery3.jpg" alt="Nature 4" loading="eager" />
+          </div>
+          <div class="slide">
+            <img src="./Img/gallery4.jpg" alt="Nature 5" loading="eager" />
+          </div>
+          <div class="slide">
+            <img src="./Img/gallery5.jpg" alt="Nature 5" loading="eager" />
+          </div>
+          <div class="slide">
+            <img src="./Img/gallery6.jpg" alt="Nature 5" loading="eager" />
+          </div>
+          <div class="slide">
+            <img src="./Img/gallery7.jpg" alt="Nature 5" loading="eager" />
+          </div>
+        </div>
+
+        <button class="button button-prev">&#8249;</button>
+        <button class="button button-next">&#8250;</button>
+
+        <div class="dots-container">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
         </div>
       </div>
     </section>
