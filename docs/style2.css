@@ -2,10 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
-.poppins-regular {
-  font-family: "Poppins", sans-serif;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -21,26 +17,38 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
-  color: #fffff0;
   background-color: #1c1c1c;
+  color: #fffff0;
   width: 100%;
   overflow-x: hidden;
 }
 
+a,
+.btn,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+  color: #fffff0;
+}
+
 .btn {
   background: transparent;
-  color: #fffff0;
-  font-family: "Open Sans", sans-serif;
-  font-size: 14px;
   border: 1px solid #fffff0;
   border-radius: 10px;
   padding: 10px 20px;
   text-transform: uppercase;
   font-weight: 700;
+  transition: background 0.3s ease;
 }
 
 .btn:hover {
-  opacity: 0.9;
+  background: #fffff0;
+  color: #1c1c1c;
 }
 
 h1,
@@ -50,7 +58,6 @@ h4,
 h5,
 h6 {
   font-family: "Poppins", sans-serif;
-  color: #fffff0;
 }
 
 img {
@@ -59,17 +66,10 @@ img {
 
 a {
   text-decoration: none;
-  color: #fffff0;
 }
 
 li {
   list-style: none;
-}
-
-.video-section,
-.gallery,
-.discography {
-  background-color: #1c1c1c;
 }
 
 .gallery h2,
@@ -78,12 +78,11 @@ li {
   font-size: 2.3rem;
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 section {
-  padding: 60px 20px;
-  margin-bottom: 40px;
+  margin: 60px auto;
 }
 
 section::before {
@@ -96,17 +95,18 @@ section::before {
 }
 
 .container {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 }
 
 .showcase {
   background: url(./Img/4817.jpg) no-repeat center top / cover;
   width: 95%;
-  margin: 0 auto 40px;
+  margin: auto;
   height: 500px;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  margin-bottom: 50px;
 }
 
 header {
@@ -114,7 +114,6 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  color: #fffff0;
 }
 
 header a:hover {
@@ -133,7 +132,6 @@ header a:hover {
 .left-nav ul li a {
   font-size: 0.6875rem;
   font-weight: 500;
-  color: #fffff0;
   text-transform: uppercase;
 }
 
@@ -157,7 +155,6 @@ header a:hover {
 .right-nav ul li a {
   font-size: 0.6875rem;
   font-weight: 500;
-  color: #fffff0;
   text-transform: uppercase;
 }
 
@@ -166,19 +163,24 @@ header a:hover {
   background-color: transparent;
   padding: 0.4375rem 0.875rem;
   border-radius: 0.625rem;
+  transition: background 0.3s ease;
+}
+
+.tickets-btn:hover {
+  background: #fffff0;
+  color: #1c1c1c;
 }
 
 .latest-music {
   margin: 5% 0 0 5%;
   max-width: 400px;
-  color: white;
 }
 
 .showcase-text {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
   line-height: 1.4;
-  color: #f0f0f0;
+  color: #fffff0;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
@@ -265,11 +267,11 @@ header a:hover {
 }
 
 /* VIDEO */
-.video-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.video-section,
+.gallery,
+.discography {
+  background-color: #1c1c1c;
+  padding: 4rem 1rem;
 }
 
 .video-container {
@@ -292,30 +294,26 @@ header a:hover {
 /* DISCOGRAPHY */
 .discography-container {
   display: flex;
-  width: 90%;
+  width: 80%;
   margin: auto;
   max-width: 1200px;
-  background: transparent;
-  gap: 5rem;
-  box-sizing: border-box;
+  gap: 2rem;
 }
 
 .album {
-  background: #770009;
+  background: #292929;
   color: #fffff0;
   padding: 1.5rem;
   border-radius: 10px;
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
   transition: box-shadow 0.3s ease;
 }
 
 .album:hover {
-  box-shadow: 0 0 30px rgba(255, 192, 203, 0.8);
+  box-shadow: 0 0 30px rgba(255, 192, 203, 0.6);
 }
 
 .album-header {
@@ -336,11 +334,6 @@ header a:hover {
 
 .album:hover .album-cover {
   transform: scale(1.05);
-}
-
-.album-info {
-  display: flex;
-  flex-direction: column;
 }
 
 .album-info h3,
@@ -376,24 +369,14 @@ header a:hover {
   cursor: pointer;
 }
 
-.track:hover {
-  background-color: #111;
-}
-
+.track:hover,
 .track.active {
-  background-color: #111;
+  background-color: red;
   font-weight: bold;
 }
 
 .track i {
   cursor: pointer;
-}
-
-.track-play-btn {
-  background: none !important;
-  border: none;
-  outline: none;
-  color: #fffff0;
 }
 
 .player {
@@ -413,23 +396,16 @@ header a:hover {
   color: #fffff0;
   font-size: 1.3rem;
   cursor: pointer;
-  transition: color 0.3s ease;
   opacity: 0.8;
+  transition: transform 0.2s ease;
 }
 
 .player button:hover {
   opacity: 1;
 }
 
-#play-pause-btn {
-  font-size: 1.5rem;
-  opacity: 1;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
 #play-pause-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 #track-duration {
@@ -452,19 +428,16 @@ header a:hover {
   border-radius: 3px;
   height: 100%;
   width: 0;
-  transition: width 0.1s linear;
 }
 
 .volume {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.3rem;
 }
 
 .volume span {
   font-size: 1.1rem;
-  color: #fffff0;
 }
 
 #volume-slider {
@@ -475,44 +448,18 @@ header a:hover {
   border-radius: 3px;
   background: linear-gradient(to right, #fffff0 100%, #333 0%);
   cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-#volume-slider::-webkit-slider-runnable-track {
-  height: 6px;
-  border-radius: 3px;
-  background: transparent; /* will be overridden inline */
-}
-
-#volume-slider::-moz-range-track {
-  height: 6px;
-  border-radius: 3px;
-  background: transparent;
-}
-
-#volume-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 0;
-  height: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease;
 }
 
 #volume-slider:hover::-webkit-slider-thumb {
   width: 0.9375rem;
   height: 0.9375rem;
   opacity: 1;
-  pointer-events: auto;
   background: #fffff0;
   border-radius: 50%;
-  border: none;
-  margin-top: -5px;
   box-shadow: 0 0 5px #f8cddaaa;
-  cursor: pointer;
 }
 
+#volume-slider::-webkit-slider-thumb,
 #volume-slider::-moz-range-thumb {
   width: 0;
   height: 0;
@@ -521,73 +468,18 @@ header a:hover {
   transition: all 0.3s ease;
 }
 
-#volume-slider:hover::-moz-range-thumb {
-  width: 0.9375rem;
-  height: 0.9375rem;
-  opacity: 1;
-  pointer-events: auto;
-  background: #fffff0;
-  border-radius: 50%;
-  border: none;
-  box-shadow: 0 0 5px #f8cddaaa;
-  cursor: pointer;
-}
-
 .discography-showcase {
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-sizing: border-box;
   padding: 0 1rem;
 }
 
-.discography-showcase h3 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.discography-showcase p {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.discography-showcase a {
-  width: fit-content;
-}
-
-.discography-showcase a:hover {
-  border: none;
-  background-color: #770009;
-  color: #fffff0;
-  transition: ease-in 0.1;
-}
-
-.discography-showcase button {
-  padding: 0.75rem 1.5rem;
-  border: 2px solid #fffff0;
-  background: transparent;
-  color: #fffff0;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-  align-self: flex-start;
-  border-radius: 5px;
-}
-
-.discography-showcase button:hover {
-  background: #fffff0;
-  color: #fffff0;
-}
-
-/* GALLERY */
 .gallery {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  background-color: #1c1c1c;
   padding: 2.5rem 1.25rem;
+  text-align: center;
 }
 
 .slider-container {
@@ -597,6 +489,7 @@ header a:hover {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: 10px;
+  background: #222;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -653,7 +546,6 @@ header a:hover {
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
-  z-index: 10;
 }
 
 .dot {
@@ -662,11 +554,10 @@ header a:hover {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .dot.active {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #fffff0;
   transform: scale(1.2);
 }
 
