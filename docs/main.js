@@ -385,3 +385,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
   goToSlide(0);
 });
+
+// COUNTDOWN
+const daysEl = document.getElementById("days");
+const hoursEl = document.getElementById("hours");
+const minutesEl = document.getElementById("minutes");
+const secondsEl = document.getElementById("seconds");
+
+function updateCountdown() {
+  const now = new Date();
+  const year = now.getMonth() > 10 ? now.getFullYear() + 1 : now.getFullYear(); // past November = next year
+  const targetDate = new Date(`${year}-12-01T00:00:00`);
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    daysEl.innerText =
+      hoursEl.innerText =
+      minutesEl.innerText =
+      secondsEl.innerText =
+        "0";
+    return;
+  }
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / 3600 / 24);
+  const hours = Math.floor((totalSeconds / 3600) % 24);
+  const minutes = Math.floor((totalSeconds / 60) % 60);
+  const seconds = totalSeconds % 60;
+
+  daysEl.innerText = days;
+  hoursEl.innerText = hours;
+  minutesEl.innerText = minutes;
+  secondsEl.innerText = seconds;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
