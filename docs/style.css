@@ -765,6 +765,21 @@ header a:hover {
     margin: 3% 0 0 3%;
     max-width: 90%;
   }
+
+  .countdown {
+    gap: 16px;
+    font-size: 2rem;
+  }
+
+  .countdown div {
+    padding: 18px;
+    min-width: 70px;
+  }
+
+  .tour-message {
+    font-size: 1.1rem;
+    margin-top: 1.8rem;
+  }
 }
 
 @media (max-width: 767px) {
@@ -864,6 +879,25 @@ header a:hover {
   .video-container {
     width: 100%;
     padding: 0 1rem;
+  }
+
+  .events-tour .container-inner {
+    padding: 25px 10px 40px;
+  }
+
+  .countdown {
+    gap: 10px;
+    font-size: 1.4rem;
+  }
+
+  .countdown div {
+    padding: 12px;
+    min-width: 60px;
+  }
+
+  .tour-message {
+    font-size: 1rem;
+    margin-top: 1.5rem;
   }
 }
 
