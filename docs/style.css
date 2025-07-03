@@ -721,6 +721,16 @@ section.links-footer {
 }
 
 .links-footer-container {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 40px 0 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  display: block;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
   font-size: 14px;
 }
 
@@ -733,6 +743,7 @@ section.links-footer {
   justify-content: space-between;
   width: 95%;
   margin: auto;
+  padding: 30px;
 }
 
 .links li {
@@ -758,7 +769,7 @@ section.links-footer {
   display: block;
   width: 95%;
   height: 1px;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
   background-color: rgba(255, 255, 255, 0.4);
 }
 
