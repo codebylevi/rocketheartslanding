@@ -85,10 +85,6 @@ function updateTrackUI() {
 
 // Load and play a specific song
 function playAlbumSong(index) {
-  if (!audio.paused && !mp3.paused && mp3 !== audio) {
-    audio.pause();
-  }
-
   if (index < 0 || index >= songs.length) return;
   if (currentTrack !== index) {
     currentTrack = index;

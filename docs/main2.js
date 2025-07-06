@@ -8,10 +8,6 @@ const durationText = document.querySelector(".duration");
 const audio = document.querySelector(".audio");
 
 function playSong() {
-  if (!audio.paused && !mp3.paused && audio !== mp3) {
-    mp3.pause();
-  }
-
   musicPlayer.classList.add("play");
 
   actionBtn.querySelector("i.fa-solid").classList.remove("fa-play");
