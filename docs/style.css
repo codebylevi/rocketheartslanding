@@ -102,6 +102,7 @@ section::before {
 }
 
 .showcase {
+  position: relative;
   background: url(./Img/4817.jpg) no-repeat center top / cover;
   width: 95%;
   margin: 0 auto 2.5rem;
@@ -865,6 +866,14 @@ section.links-footer {
     margin: auto;
   }
 
+  .gallery h2,
+  .video-section h2,
+  .discography h2,
+  .events-tour h2,
+  .store h2 {
+    font-size: 2rem;
+  }
+
   section::before {
     width: 100%;
   }
@@ -872,20 +881,27 @@ section.links-footer {
   .showcase {
     width: 100%;
     background: url(./Img/42.jpg) no-repeat center center / cover;
+    height: 37.5rem;
   }
 
   .logo {
-    width: 50px;
+    width: 70px;
   }
 
   .latest-music {
-    margin: 5% 0 0 5%;
+    position: absolute;
+    width: 90%;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
     max-width: 25rem;
   }
 
   .showcase-text {
     margin-bottom: 1.5rem;
     line-height: 1.4;
+    text-align: center;
   }
 
   .music-player {
@@ -996,13 +1012,17 @@ section.links-footer {
   }
 
   .countdown div {
-    padding: 12px;
-    min-width: 60px;
+    padding: 10px;
+    min-width: 0;
   }
 
   .tour-message {
     font-size: 1rem;
     margin-top: 1.5rem;
+  }
+
+  .store-grid img {
+    font-size: 15.6rem;
   }
 
   section.links-footer {
@@ -1011,24 +1031,33 @@ section.links-footer {
 
   .links-footer-inner {
     width: 100%;
+    height: 37.5rem;
   }
 
   .links-footer-container {
     display: block;
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 13px;
   }
 
   .links {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .links img {
+    width: 7.5rem;
   }
 
   .footer-inner {
     flex-direction: column;
     justify-content: center;
+    gap: 20px;
   }
 }
 
