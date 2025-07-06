@@ -8,6 +8,10 @@ const durationText = document.querySelector(".duration");
 const audio = document.querySelector(".audio");
 
 function playSong() {
+  if (!audio.paused && !mp3.paused && audio !== mp3) {
+    mp3.pause();
+  }
+
   musicPlayer.classList.add("play");
 
   actionBtn.querySelector("i.fa-solid").classList.remove("fa-play");
@@ -168,6 +172,10 @@ function updateTrackUI() {
 
 // Load and play a specific song
 function playAlbumSong(index) {
+  if (!audio.paused && !mp3.paused && mp3 !== audio) {
+    audio.pause();
+  }
+
   if (index < 0 || index >= songs.length) return;
   if (currentTrack !== index) {
     currentTrack = index;
@@ -249,12 +257,14 @@ function formatTime(seconds) {
 }
 
 // Update seek bar and time display during playback
-mp3.addEventListener("timeupdate", () => {
+mp3.addEventListener("timeupdate", (e) => {
   if (!isSeeking) {
-    const current = mp3.currentTime;
-    const duration = mp3.duration || 0;
-    seekBar.value = (current / duration) * 100 || 0;
-    durationDisplay.textContent = `${formatTime(current)} / ${formatTime(
+    const { duration, currentTime } = e.srcElement;
+    const seekPercent = (currentTime / duration) * 100 || 0;
+    seekBar.value = seekPercent;
+    seekProgress.style.width = `${seekPercent}%`;
+
+    durationDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(
       duration
     )}`;
   }
@@ -266,18 +276,7 @@ mp3.addEventListener("ended", () => {
 });
 
 // Seek bar functionality
-mp3.addEventListener("timeupdate", updateSeekBar);
 seekBar.addEventListener("click", setSeekProgress);
-
-function updateSeekBar(e) {
-  const { duration, currentTime } = e.srcElement;
-  const seekPercent = (currentTime / duration) * 100;
-  seekProgress.style.width = `${seekPercent}%`;
-
-  durationDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(
-    duration
-  )}`;
-}
 
 function setSeekProgress(e) {
   const width = this.clientWidth;
@@ -292,6 +291,11 @@ function updateVolumeSliderBackground() {
   const value = parseFloat(volumeSlider.value) * 100;
   volumeSlider.style.background = `linear-gradient(to right, #fffff0 ${value}%, #333 ${value}%)`;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  mp3.volume = volumeSlider.value;
+  updateVolumeSliderBackground();
+});
 
 // Set initial background
 updateVolumeSliderBackground();
