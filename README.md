@@ -1,4 +1,5 @@
 ﻿# Rocket Hearts
-Developed with Html, Css and Javascript
+Musical artist website developed with Html, Css and Javascript
+
 
 
